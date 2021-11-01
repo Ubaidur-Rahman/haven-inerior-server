@@ -143,8 +143,8 @@ client.connect(err => {
         const id = ObjectId(req.params.id)
         console.log('object', id)
         serviceCollection.deleteOne({ _id: id })
-            .then(documents => {
-                console.log(documents)
+            .then(result => {
+                res.send(result.deletedCount > 0);
             })
     })
 
