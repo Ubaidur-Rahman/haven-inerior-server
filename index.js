@@ -142,7 +142,7 @@ client.connect(err => {
     app.delete('/delete/:id', (req, res) => {
         const id = ObjectId(req.params.id)
         console.log('object', id)
-        serviceCollection.findOneAndDelete({ _id: id })
+        serviceCollection.deleteOne({ _id: id })
             .then(documents => {
                 console.log(documents)
             })
