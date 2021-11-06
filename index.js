@@ -144,7 +144,7 @@ client.connect(err => {
         const status = req.body.status
         orderCollection.updateOne({ _id: ObjectId(req.body.id) },
             {
-                $set: { 'booking.status': status }
+                $set: { 'status': status }
             }
         ).then(result => {
             res.send(result.modifiedCount > 0)
