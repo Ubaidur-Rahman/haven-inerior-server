@@ -139,6 +139,19 @@ client.connect(err => {
     });
 
 
+     // Update Order
+     app.patch('/updateOrder', (req, res) => {
+        const status = req.body.status
+        orderCollection.updateOne({ _id: ObjectId(req.body.id) },
+            {
+                $set: { 'booking.status': status }
+            }
+        ).then(result => {
+            res.send(result.modifiedCount > 0)
+        })
+    })
+
+
     app.delete('/delete/:id', (req, res) => {
         const id = ObjectId(req.params.id)
         console.log('object', id)
