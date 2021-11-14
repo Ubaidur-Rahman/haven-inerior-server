@@ -67,7 +67,6 @@ client.connect(err => {
         console.log('add new service', newOrder)
         orderCollection.insertOne(newOrder)
             .then(result => {
-                console.log('inserted count', result.insertedCount)
                 res.send(result.insertedCount > 0)
             })
 
@@ -91,7 +90,6 @@ client.connect(err => {
         console.log(email)
         adminCollection.find({ email: email })
             .toArray((err, admins) => {
-                console.log(admins.length)
                 res.send(admins.length > 0);
             })
     })
